@@ -7,6 +7,25 @@ import { personas, EDAD_MINIMA } from './personas'
  * devuelva un array con un atributo `allowed` (_boolean_) que indique 
  * si puede entrar o no en un casino
  */
+// 1. Necesitas un array de base (puedes usar el mismo de antes)
+const personas = [
+    { name: 'Maria', age: 57 },
+    { name: 'Junior', age: 19 }
+];
+
+// 2. La función de transformación
+function procesarEntradaCasino(lista) {
+    return lista.map(persona => {
+        // Creamos una copia del objeto y le agregamos el atributo 'allowed'
+        return {
+            ...persona, // Esto copia los datos existentes (nombre, edad)
+            allowed: persona.age > 21 // Esto crea el booleano (true o false)
+        };
+    });
+}
+
+// 3. ¡No te olvides del console.log para verlo en la terminal!
+console.log(procesarEntradaCasino(personas));
 
 console.log('Listado Original:', personas)
 
