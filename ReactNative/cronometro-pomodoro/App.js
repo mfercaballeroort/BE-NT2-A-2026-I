@@ -1,14 +1,31 @@
 import { StatusBar } from 'expo-status-bar';
 import { Button, StyleSheet, Text, View } from 'react-native';
 import { vibrate } from './utils';
+import Constants from 'expo-constants';
+import { SafeAreaView } from 'react-native-safe-area-context';
+
+/**
+ * Importamos nuestros componentes
+ */
+import Cronometro from './components/Cronometro';
+import Control from './components/Control';
+import { CronometroProvider } from './hooks/useCronometro';
+
+// console.log(Constants.statusBarHeight);
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <Button title="Vibrate" onPress={vibrate} />
+    <SafeAreaView style={styles.container}>
+      
+
+      <CronometroProvider>
+        <Cronometro />
+        <Control />
+      </CronometroProvider>
+      
+      
       <StatusBar style="auto" />
-    </View>
+    </SafeAreaView>
   );
 }
 
@@ -17,6 +34,7 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#fff',
     alignItems: 'center',
-    justifyContent: 'center',
-  },
+    // justifyContent: 'center'
+    paddingTop: Constants.statusBarHeight
+  }
 });
